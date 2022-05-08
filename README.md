@@ -8,7 +8,7 @@ files.
 ## Badges
 
 [![README](https://img.shields.io/badge/Help-Doc-lightgrey)](README.md)
-[![GitHub Releases](https://img.shields.io/github/v/release/tanviranindo/bracuspace_flutter)](https://github.com/tanviranindo/bracuspace_flutter/releases)
+[![GitHub Releases](https://img.shields.io/github/release-date-pre/tanviranindo/bracuspace_flutter)](https://github.com/tanviranindo/bracuspace_flutter/releases)
 [![GitHub License](https://img.shields.io/github/license/tanviranindo/bracuspace_flutter.svg)](https://github.com/tanviranindo/bracuspace_flutter/blob/master/LICENSE.md)
 [![Last Commit](https://img.shields.io/github/last-commit/tanviranindo/bracuspace_flutter/master)](https://github.com/tanviranindo/bracuspace_flutter/commits/master)
 
