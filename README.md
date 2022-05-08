@@ -11,16 +11,34 @@ files.
 [![GitHub License](https://img.shields.io/github/license/tanviranindo/bracuspace_flutter.svg)](https://github.com/tanviranindo/bracuspace_flutter/blob/master/LICENSE.md)
 [![Last Commit](https://img.shields.io/github/last-commit/tanviranindo/bracuspace_flutter/master)](https://github.com/tanviranindo/bracuspace_flutter/commits/master)
 
+## Milestones
 
-## Getting Started
+The progress of the application has been maintained using the following milestone record
 
-This project is a starting point for a Flutter application.
+| Milestone   | Release           | Tasks                                           | Date           | Status |
+|-------------|-------------------|-------------------------------------------------|----------------|--------|
+| Milestone 1 | Pre-Alpha         | Diagrams                                        | 20 March, 2022 | ☑️     |
+| Milestone 2 | Alpha             | Login, Signup, Home, Navigation                 | 8 May, 2022    | ❌      |
+| Milestone 3 | Beta              | Profile, Files, Storage, Subscription, Settings | * May, 2022    | ❌      |
+| Milestone 4 | Release Candidate | Connect backend                                 | * May, 2022    | ❌      |
+| Milestone 5 | Release           | Final touch up                                  | * May, 2022    | ❌      |
 
-A few resources to get you started if this is your first Flutter project:
+## Run
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To run the application in development mode, get the project from GitHub repository
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials, samples, guidance on
-mobile development, and a full API reference.
+```shell
+git clone https://github.com/tanviranindo/bracuspace_flutter.git
+```
+
+Now open the project and run the following command to install the dependencies/packages
+
+```shell
+flutter pub get
+```
+
+Finally, after selecting a device for emulator in your IDE (Android Studio / VS Code), run the following command
+
+```sh
+flutter run
+```
