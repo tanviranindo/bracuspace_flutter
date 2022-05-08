@@ -81,32 +81,10 @@ class HomeScreen extends StatelessWidget {
                       splashRadius: 20.0,
                       icon: Icon(Icons.table_rows, color: kSecondary),
                     ),
-                    // IconButton(
-                    //   onPressed: () {},
-                    //   splashRadius: 20.0,
-                    //   icon: const Icon(Icons.window_sharp, color: Color(0xFFB0C0D0)),
-                    // ),
                   ],
                 )
               ],
             ),
-            // Expanded(
-            //   child: Center(
-            //     child: GridView.builder(
-            //       itemCount: folderList.length,
-            //       padding: const EdgeInsets.symmetric(vertical: 30.0),
-            //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //         crossAxisCount: 2,
-            //         crossAxisSpacing: 19.0,
-            //         mainAxisSpacing: 19.0,
-            //         childAspectRatio: 3 / 2.1,
-            //       ),
-            //       itemBuilder: (context, index) => FolderCard(
-            //         index: index,
-            //       ),
-            //     ),
-            //   ),
-            // )
           ],
         ),
       ),

@@ -190,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           IconButton(
             onPressed: () {
-              print('Login with Facebook');
+              // print('Login with Facebook');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.instagram, width: 20.0),
@@ -198,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(width: 50.0),
           IconButton(
             onPressed: () {
-              print('Login with Google');
+              // print('Login with Google');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.twitter, width: 20.0),
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(width: 50.0),
           IconButton(
             onPressed: () {
-              print('Login with Twitter');
+              // print('Login with Twitter');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.facebook, height: 20.0),
@@ -219,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildSignupBtn() {
     return GestureDetector(
       onTap: () => {
-        print('Sign Up Button Pressed'),
+        // print('Sign Up Button Pressed'),
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const SignUpScreen(),
@@ -249,7 +249,10 @@ class _LoginScreenState extends State<LoginScreen> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
-          onTap: () => {print('Login Screen Tapped'), FocusScope.of(context).unfocus()},
+          onTap: () => {
+            // print('Login Screen Tapped');
+            FocusScope.of(context).unfocus()
+          },
           child: Stack(
             children: <Widget>[
               SizedBox(

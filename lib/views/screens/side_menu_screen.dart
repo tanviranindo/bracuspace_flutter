@@ -53,7 +53,7 @@ class SideMenuScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: kTextHeading),
                               ),
                               Text(
-                                'Mohammadpur, Dhaka',
+                                '13.29 GB out of 15 GB used',
                                 style: TextStyle(fontSize: 10.0, color: kTextSubtitle),
                               ),
                             ],

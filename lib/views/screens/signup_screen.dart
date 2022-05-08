@@ -32,9 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
+            Container(padding: const EdgeInsets.only(top: 10.0, bottom: 10.0), child: Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
             Text(
               'Back',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: kTextHeading),
@@ -196,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         children: [
           IconButton(
             onPressed: () {
-              print('Login with Facebook');
+              // print('Login with Facebook');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.instagram, width: 20.0),
@@ -204,7 +202,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           const SizedBox(width: 50.0),
           IconButton(
             onPressed: () {
-              print('Login with Google');
+              // print('Login with Google');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.twitter, width: 20.0),
@@ -212,7 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           const SizedBox(width: 50.0),
           IconButton(
             onPressed: () {
-              print('Login with Twitter');
+              // print('Login with Twitter');
             },
             splashRadius: 20.0,
             icon: Image.asset(Assets.facebook, height: 20.0),
@@ -254,7 +252,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
-          onTap: () => {print('Signup Screen Tapped'), FocusScope.of(context).unfocus()},
+          onTap: () => {
+            // print('Signup Screen Tapped'),
+            FocusScope.of(context).unfocus()
+          },
           child: Stack(
             children: <Widget>[
               SizedBox(

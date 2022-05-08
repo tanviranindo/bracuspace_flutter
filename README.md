@@ -2,8 +2,7 @@
 
 ## Overview
 
-BRACU Space is a cloud storage system where users can upload, download, transfer, delete, and share
-files.
+BRACU Space is a cloud storage system where users can upload, download, delete, and share files.
 
 ## Badges
 
