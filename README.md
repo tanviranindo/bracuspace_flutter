@@ -19,7 +19,7 @@ The progress of the application has been maintained using the following mileston
 | Milestone   | Release           | Tasks                                           | Date           | Status |
 |-------------|-------------------|-------------------------------------------------|----------------|--------|
 | Milestone 1 | Pre-Alpha         | Diagrams                                        | 20 March, 2022 | ☑️     |
-| Milestone 2 | Alpha             | Login, Signup, Home, Navigation                 | 8 May, 2022    | ❌      |
+| Milestone 2 | Alpha             | Login, Signup, Home, Navigation                 | 8 May, 2022    | ☑️     |
 | Milestone 3 | Beta              | Profile, Files, Storage, Subscription, Settings | * May, 2022    | ❌      |
 | Milestone 4 | Release Candidate | Connect backend                                 | * May, 2022    | ❌      |
 | Milestone 5 | Release           | Final touch up                                  | * May, 2022    | ❌      |
@@ -38,7 +38,8 @@ Now open the project and run the following command to install the dependencies/p
 flutter pub get
 ```
 
-Finally, after selecting a device for emulator in your IDE (Android Studio / VS Code), run the following command
+Finally, after selecting a device for emulator in your IDE (Android Studio / VS Code), run the
+following command
 
 ```sh
 flutter run
