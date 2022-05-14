@@ -1,23 +1,43 @@
 import 'package:bracuspace_flutter/views/screens/home_screen.dart';
 import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
 import 'package:bracuspace_flutter/views/screens/signup_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bracuspace_flutter/utilities/constants.dart';
 
 import '../../shared/assets.dart';
 import '../../shared/constants.dart';
+import '../../utilities/showSnackBar.dart';
+import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool _obscureText = true;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void loginUser() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text)
+        .then((user) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        ),
+      );
+    }).catchError((error) {
+      showSnackBar(context, error.message);
+    });
+  }
 
   Widget _buildBackButton() {
     return GestureDetector(
@@ -32,10 +52,16 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(padding: const EdgeInsets.only(top: 10.0, bottom: 10.0), child: Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
+            Container(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child:
+                    Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
             Text(
               'Back',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: kTextHeading),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: kTextHeading),
             ),
           ],
         ),
@@ -53,11 +79,12 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: const TextField(
+          child: TextField(
             keyboardType: TextInputType.emailAddress,
             cursorColor: Colors.black,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
+            style: const TextStyle(color: Colors.black),
+            controller: emailController,
+            decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.email, color: Colors.black),
@@ -82,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 60.0,
           child: TextFormField(
             obscureText: _obscureText,
+            controller: passwordController,
             style: const TextStyle(color: Colors.black),
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -98,7 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: IconTheme(
                   data: const IconThemeData(color: Colors.black),
-                  child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+                  child: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
               ),
             ),
@@ -112,8 +141,14 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
-        child: const Text('Forgot Password?', style: kLabelStyle, textAlign: TextAlign.right),
+        onPressed: () {
+          print('Forgot Password Button Pressed');
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const ForgotPassword(),
+          ));
+        },
+        child: const Text('Forgot Password?',
+            style: kLabelStyle, textAlign: TextAlign.right),
       ),
     );
   }
@@ -128,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Checkbox(
               value: _rememberMe,
               checkColor: Colors.black,
-              activeColor: Color(0xFFF6CF57),
+              activeColor: const Color(0xFFF6CF57),
               onChanged: (value) {
                 setState(() {
                   _rememberMe = value!;
@@ -148,21 +183,20 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: TextButton(
         onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
-            ),
-          );
+          loginUser();
+          // emailController.dispose();
+          // passwordController.dispose();
         },
-        child: const Text(
-          'LOGIN',
-          style: TextStyle(fontSize: 16.0),
-        ),
         style: TextButton.styleFrom(
           primary: kBackgroundBlack,
           backgroundColor: kTextPikachu,
           fixedSize: const Size(150, 50),
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        ),
+        child: const Text(
+          'LOGIN',
+          style: TextStyle(fontSize: 16.0),
         ),
       ),
     );
@@ -231,11 +265,17 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             TextSpan(
               text: 'New to BRACU Space? ',
-              style: TextStyle(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400),
             ),
             TextSpan(
               text: 'Create account',
-              style: TextStyle(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -259,7 +299,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: double.infinity,
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 60.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 40.0, vertical: 60.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -267,7 +308,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20.0),
                       const Text(
                         'Sign In',
-                        style: TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 30.0),
                       _buildEmailTF(),

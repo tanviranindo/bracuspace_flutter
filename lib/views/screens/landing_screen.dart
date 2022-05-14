@@ -1,6 +1,6 @@
 import 'package:bracuspace_flutter/views/screens/screens.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
-import 'package:bracuspace_flutter/views/screens/signup_screen.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
@@ -29,14 +29,18 @@ class LandingScreen extends StatelessWidget {
                 const Spacer(flex: 1),
                 const Text(
                   'BRACU Space',
-                  style: TextStyle(color: Color(0xFF1B1D28), fontSize: 38.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Color(0xFF1B1D28),
+                      fontSize: 38.0,
+                      fontWeight: FontWeight.bold),
                 ),
                 const Spacer(
                   flex: 2,
                 ),
                 const Text(
                   'A cloud storage system for individuals to manage their data.\n\n',
-                  style: TextStyle(color: Color(0xFF7B7F9E), fontSize: 14.0, height: 2.0),
+                  style: TextStyle(
+                      color: Color(0xFF7B7F9E), fontSize: 14.0, height: 2.0),
                 ),
                 const Spacer(flex: 1),
                 Row(
@@ -81,13 +85,19 @@ class LandingScreen extends StatelessWidget {
                         primary: kBackgroundBlack,
                         backgroundColor: kTextPikachu,
                         fixedSize: const Size(150, 50),
-                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
                       ),
                     ),
                   ],
                 ),
                 const Spacer(flex: 10),
-                const Align(alignment: Alignment.center, child: Text('Version 1.0.0', style: TextStyle(fontSize: 10.0, color: Color(0xFF3A4276)))),
+                const Align(
+                    alignment: Alignment.center,
+                    child: Text('Version 1.0.0',
+                        style: TextStyle(
+                            fontSize: 10.0, color: Color(0xFF3A4276)))),
                 const Spacer(flex: 2), // const Spacer(flex: 10),
               ],
             ),

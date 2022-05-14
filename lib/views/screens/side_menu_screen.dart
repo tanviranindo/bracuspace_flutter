@@ -1,6 +1,7 @@
 import 'package:bracuspace_flutter/models/menu.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
 import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SideMenuScreen extends StatelessWidget {
@@ -40,7 +41,8 @@ class SideMenuScreen extends StatelessWidget {
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.red,
-                              image: DecorationImage(image: AssetImage(Assets.profileImage)),
+                              image: DecorationImage(
+                                  image: AssetImage(Assets.profileImage)),
                             ),
                           ),
                           const SizedBox(width: 8.0),
@@ -50,11 +52,15 @@ class SideMenuScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'Tanvir Rahman',
-                                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: kTextHeading),
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: kTextHeading),
                               ),
                               Text(
-                                '13.29 GB out of 15 GB used',
-                                style: TextStyle(fontSize: 10.0, color: kTextSubtitle),
+                                '0.36 GB out of 15 GB used',
+                                style: TextStyle(
+                                    fontSize: 10.0, color: kTextSubtitle),
                               ),
                             ],
                           )
@@ -83,15 +89,25 @@ class SideMenuScreen extends StatelessWidget {
                     onTap: menuItems[i].route != null
                         ? () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (context) => menuItems[i].route as Widget, settings: RouteSettings(name: menuItems[i].route.toString())),
+                                  builder: (context) =>
+                                      menuItems[i].route as Widget,
+                                  settings: RouteSettings(
+                                      name: menuItems[i].route.toString())),
                             )
                         : null,
                     minLeadingWidth: 26.0,
                     contentPadding: const EdgeInsets.all(0),
-                    leading: i == 0 ? Container(width: 4.0, color: darken(kPrimary), height: double.infinity) : const SizedBox(),
+                    leading: i == 0
+                        ? Container(
+                            width: 4.0,
+                            color: darken(kPrimary),
+                            height: double.infinity)
+                        : const SizedBox(),
                     title: Text(
                       menuItems[i].title,
-                      style: TextStyle(fontWeight: i == 0 ? FontWeight.w800 : FontWeight.normal),
+                      style: TextStyle(
+                          fontWeight:
+                              i == 0 ? FontWeight.w800 : FontWeight.normal),
                     ),
                   ),
                 ),
@@ -103,14 +119,22 @@ class SideMenuScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 30.0),
                     child: TextButton.icon(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const LandingScreen()),
-                        );
+                        FirebaseAuth.instance.signOut().then((value) => {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LandingScreen()),
+                              )
+                            });
+                        // print('Signed out successfully!');
                       },
                       icon: Image.asset(Assets.logout, scale: 3.0),
                       label: Text(
                         'Logout',
-                        style: TextStyle(fontSize: 16.0, color: kTextHeading, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            color: kTextHeading,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
@@ -119,7 +143,8 @@ class SideMenuScreen extends StatelessWidget {
                     padding: EdgeInsets.only(left: 40.0, bottom: 20.0),
                     child: Text(
                       'Version 1.0.0',
-                      style: TextStyle(fontSize: 10.0, color: Color(0xFF3A4276)),
+                      style:
+                          TextStyle(fontSize: 10.0, color: Color(0xFF3A4276)),
                     ),
                   ),
                 ],

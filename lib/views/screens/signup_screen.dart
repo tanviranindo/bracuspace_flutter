@@ -1,9 +1,11 @@
+import 'package:bracuspace_flutter/utilities/showSnackBar.dart';
 import 'package:bracuspace_flutter/views/screens/home_screen.dart';
 import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bracuspace_flutter/utilities/constants.dart';
-
 import '../../shared/assets.dart';
 import '../../shared/constants.dart';
 import 'login_screen.dart';
@@ -12,12 +14,39 @@ class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  SignUpScreenState createState() => SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class SignUpScreenState extends State<SignUpScreen> {
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  void signUpUser() async {
+    if (passwordController.text != confirmPasswordController.text) {
+      showSnackBar(context, 'Passwords do not match');
+    } else {
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .then((value) {
+        // if (value.user.emailVerified)
+        final FirebaseAuth auth = FirebaseAuth.instance;
+        final User user = auth.currentUser!;
+        user.updateDisplayName(usernameController.text);
+
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
+      }).onError((error, stackTrace) {
+        // print(error.toString());
+        showSnackBar(context, error.toString());
+      });
+    }
+  }
 
   Widget _buildBackButton() {
     return GestureDetector(
@@ -32,10 +61,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(padding: const EdgeInsets.only(top: 10.0, bottom: 10.0), child: Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
+            Container(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child:
+                    Icon(Icons.arrow_back_ios, color: kTextHeading, size: 25)),
             Text(
               'Back',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: kTextHeading),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: kTextHeading),
             ),
           ],
         ),
@@ -43,25 +78,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildEmailTF() {
+  Widget _buildUserName() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text('Email', style: kLabelStyle),
-        const SizedBox(height: 10.0),
+        const SizedBox(height: 30.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: const TextField(
-            keyboardType: TextInputType.emailAddress,
+          child: TextField(
+            keyboardType: TextInputType.name,
+            controller: usernameController,
             cursorColor: Colors.black,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
+            style: const TextStyle(color: Colors.black),
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(Icons.people, color: Colors.black),
+              hintText: 'Enter your name',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEmailTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            controller: emailController,
+            cursorColor: Colors.black,
+            style: const TextStyle(color: Colors.black),
+            decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.email, color: Colors.black),
-              hintText: 'Enter your Email',
+              hintText: 'Enter your email',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -74,14 +135,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text('Password', style: kLabelStyle),
-        const SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
             obscureText: _obscurePassword,
+            controller: passwordController,
             style: const TextStyle(color: Colors.black),
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -98,7 +158,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 child: IconTheme(
                   data: const IconThemeData(color: Colors.black),
-                  child: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+                  child: Icon(_obscurePassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
                 ),
               ),
             ),
@@ -112,14 +174,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text('Confirm Password', style: kLabelStyle),
-        const SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
             obscureText: _obscureConfirmPassword,
+            controller: confirmPasswordController,
             style: const TextStyle(color: Colors.black),
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -136,7 +197,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 child: IconTheme(
                   data: const IconThemeData(color: Colors.black),
-                  child: Icon(_obscureConfirmPassword ? Icons.visibility : Icons.visibility_off),
+                  child: Icon(_obscureConfirmPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
                 ),
               ),
             ),
@@ -152,21 +215,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
       width: double.infinity,
       child: TextButton(
         onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
-            ),
-          );
+          signUpUser();
+          // emailController.dispose();
+          // passwordController.dispose();
+          // confirmPasswordController.dispose();
         },
-        child: const Text(
-          'SIGN UP',
-          style: TextStyle(fontSize: 16.0),
-        ),
         style: TextButton.styleFrom(
           primary: kBackgroundBlack,
           backgroundColor: kTextPikachu,
           fixedSize: const Size(150, 50),
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        ),
+        child: const Text(
+          'SIGN UP',
+          style: TextStyle(fontSize: 16.0),
         ),
       ),
     );
@@ -188,7 +251,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildSocialBtnRow() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -234,11 +297,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
           children: [
             TextSpan(
               text: 'Already have an account? ',
-              style: TextStyle(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400),
             ),
             TextSpan(
               text: 'Login',
-              style: TextStyle(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -262,28 +331,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: double.infinity,
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 60.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 40.0, vertical: 60.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       _buildBackButton(),
                       const Text(
                         'Sign Up',
-                        style: TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold),
                       ),
+                      _buildUserName(),
                       const SizedBox(height: 20.0),
                       _buildEmailTF(),
                       const SizedBox(height: 20.0),
                       _buildPasswordTF(),
                       const SizedBox(height: 20.0),
                       _buildConfirmPasswordTF(),
-
                       // _buildForgotPasswordBtn(),
                       // _buildRememberMeCheckbox(),
                       _buildSignupBtn(),
+                      _buildLoginBtn(),
+                      const SizedBox(height: 20.0),
                       _buildSignInWithText(),
                       _buildSocialBtnRow(),
-                      _buildLoginBtn(),
                     ],
                   ),
                 ),
