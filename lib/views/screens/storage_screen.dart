@@ -20,7 +20,7 @@ class _StorageDetailScreenState extends State<StorageDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Storage Details'),
+        title: const Text('Storage'),
         elevation: 0.0,
         foregroundColor: kSecondary,
         backgroundColor: themeData.scaffoldBackgroundColor,

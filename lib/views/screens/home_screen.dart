@@ -117,7 +117,7 @@ class HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Center(
                 child: GridView.builder(
-                  itemCount: 2,
+                  itemCount: 4,
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,

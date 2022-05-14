@@ -20,7 +20,7 @@ The progress of the application has been maintained using the following mileston
 | Milestone 1 | Pre-Alpha         | Diagrams                                        | 20 March, 2022 | ☑️     |
 | Milestone 2 | Alpha             | Login, Signup, Home, Navigation                 | 8 May, 2022    | ☑️     |
 | Milestone 3 | Beta              | Profile, Files, Storage, Subscription, Settings | 14 May, 2022   | ☑️     |
-| Milestone 4 | Release Candidate | Connect backend                                 | * May, 2022    | ❌      |
+| Milestone 4 | Release Candidate | Connect backend                                 | 14 May, 2022   | ☑️     |
 | Milestone 5 | Release           | Final touch up                                  | * May, 2022    | ❌      |
 
 ## Run
