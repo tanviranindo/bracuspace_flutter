@@ -1,12 +1,12 @@
 import 'package:bracuspace_flutter/components/constants.dart';
-import 'package:bracuspace_flutter/components/showSnackBar.dart';
+import 'package:bracuspace_flutter/components/show_snackbar.dart';
 import 'package:bracuspace_flutter/views/screens/profile_screen.dart';
 import 'package:bracuspace_flutter/views/screens/screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../components/showSnackBar.dart';
+import '../../components/show_snackbar.dart';
 import '../../shared/assets.dart';
 import '../../shared/constants.dart';
 

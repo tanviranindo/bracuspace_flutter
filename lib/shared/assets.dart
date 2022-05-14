@@ -18,6 +18,4 @@ class Assets {
   static const String rightArrow = 'assets/images/right_arrow.webp';
   static const String logout = 'assets/images/logout.webp';
   static const String logo = 'assets/images/logo.jpeg';
-// static const String folderTop = 'assets/svg/folder_top.svg';
-// static const String folderBody = 'assets/svg/folder_body.svg';
 }

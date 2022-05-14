@@ -19,4 +19,3 @@ Color lighten(Color color, [double amount = .1]) {
 
   return hslLight.toColor();
 }
-// TODO Implement this library.

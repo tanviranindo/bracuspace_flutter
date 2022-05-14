@@ -1,4 +1,4 @@
-import 'package:bracuspace_flutter/components/showSnackBar.dart';
+import 'package:bracuspace_flutter/components/show_snackbar.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
