@@ -21,7 +21,7 @@ The progress of the application has been maintained using the following mileston
 | Milestone 2 | Alpha             | Login, Signup, Home, Navigation                 | 8 May, 2022    | ☑️     |
 | Milestone 3 | Beta              | Profile, Files, Storage, Subscription, Settings | 14 May, 2022   | ☑️     |
 | Milestone 4 | Release Candidate | Connect backend                                 | 14 May, 2022   | ☑️     |
-| Milestone 5 | Release           | Final touch up                                  | * May, 2022    | ❌      |
+| Milestone 5 | Release           | Final touch up                                  | 14 May, 2022   | ☑️     |
 
 ## Run
 
@@ -43,3 +43,32 @@ following command
 ```sh
 flutter run
 ```
+
+# Support
+
+This application has been developed and tested in the following devices.
+
+|  Status  |    Model     | Version |  Display  | Screen |
+|:--------:|:------------:|:-------:|:---------:|:------:|
+| &#x2611; |    Pixel     |   5.1   | 1920x1080 |  5.0"  |
+| &#x2611; |   Pixel XL   |   5.1   | 1440x2560 |  5.5"  |
+| &#x2611; |  Pixel 2XL   |  11.0   | 1440x2880 |  6.0"  |
+| &#x2611; |  Pixel 4 XL  |  12.0   | 1440x3040 |  6.3"  |
+| &#x2611; | Nexus 7 2012 |   4.1   | 800x1280  |  7.0"  |
+| &#x2611; |   Nexus 9    |   5.1   | 2048x1536 |  8.9"  |
+
+# TODO
+
+The following contains the list of tasks that need to be completed for the application.
+
+- [x] User login, signup, and logout
+- [x] User verification, password reset
+- [x] User profile view and settings
+- [x] File upload, download, delete, and share
+- [x] Connect backend
+- [x] Storage management
+- [x] Documentation
+- [ ] Subscription management
+- [ ] Testing
+- [ ] Add animation, progress bar, and dark mode
+- [ ] Add sync offline mode

@@ -1,14 +1,14 @@
-import 'package:bracuspace_flutter/utilities/showSnackBar.dart';
-import 'package:bracuspace_flutter/views/screens/home_screen.dart';
-import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
+import 'package:bracuspace_flutter/components/constants.dart';
+import 'package:bracuspace_flutter/components/showSnackBar.dart';
+import 'package:bracuspace_flutter/views/screens/profile_screen.dart';
+import 'package:bracuspace_flutter/views/screens/screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bracuspace_flutter/utilities/constants.dart';
+
+import '../../components/showSnackBar.dart';
 import '../../shared/assets.dart';
 import '../../shared/constants.dart';
-import 'login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class SignUpScreenState extends State<SignUpScreen> {
         user.updateDisplayName(usernameController.text);
 
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+            MaterialPageRoute(builder: (context) => const ProfileScreen()));
       }).onError((error, stackTrace) {
         // print(error.toString());
         showSnackBar(context, error.toString());
@@ -283,12 +283,12 @@ class SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildLoginBtn() {
+  Widget _buildSignUpBtn() {
     return GestureDetector(
       onTap: () => {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) => const HomeScreen(),
           ),
         ),
       },
@@ -354,7 +354,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                       // _buildForgotPasswordBtn(),
                       // _buildRememberMeCheckbox(),
                       _buildSignupBtn(),
-                      _buildLoginBtn(),
+                      _buildSignUpBtn(),
                       const SizedBox(height: 20.0),
                       _buildSignInWithText(),
                       _buildSocialBtnRow(),

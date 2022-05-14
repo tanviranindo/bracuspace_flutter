@@ -1,14 +1,11 @@
-import 'package:bracuspace_flutter/views/screens/home_screen.dart';
-import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
+import 'package:bracuspace_flutter/components/constants.dart';
 import 'package:bracuspace_flutter/views/screens/screens.dart';
-import 'package:bracuspace_flutter/views/screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bracuspace_flutter/utilities/constants.dart';
 
+import '../../components/showSnackBar.dart';
 import '../../shared/constants.dart';
-import '../../utilities/showSnackBar.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -68,7 +65,6 @@ class ForgotPasswordState extends State<ForgotPassword> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text('Email', style: kLabelStyle),
         const SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -92,7 +88,7 @@ class ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
-  Widget _buildLoginBtn() {
+  Widget _buildResetPasswordBtn() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
@@ -145,7 +141,7 @@ class ForgotPasswordState extends State<ForgotPassword> {
                       ),
                       const SizedBox(height: 30.0),
                       _buildEmailTF(),
-                      _buildLoginBtn(),
+                      _buildResetPasswordBtn(),
                     ],
                   ),
                 ),

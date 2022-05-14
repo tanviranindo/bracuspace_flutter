@@ -1,8 +1,5 @@
-import 'dart:math';
-
+import 'package:bracuspace_flutter/components/showSnackBar.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
-import 'package:bracuspace_flutter/utilities/showSnackBar.dart';
-import 'package:bracuspace_flutter/views/widgets/folder_car.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

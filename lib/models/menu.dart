@@ -18,7 +18,9 @@ List<Menu> menuItems = [
   Menu(title: 'Home', route: const HomeScreen()),
   Menu(title: 'Profile', route: const ProfileScreen()),
   Menu(title: 'Storage', route: const StorageDetailScreen()),
-  Menu(title: 'Subscription', ),
+  Menu(
+    title: 'Subscription',
+  ),
   Menu(title: 'Settings', route: const SettingScreen()),
   // Menu(title: 'Shared'), route: const SharedScreen()),
   // Menu(title: 'Storage', route: const StorageDetailScreen()),

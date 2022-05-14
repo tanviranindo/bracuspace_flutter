@@ -1,9 +1,7 @@
 import 'package:bracuspace_flutter/models/models.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:open_file/open_file.dart';
 
 import '../../models/files.dart';
 import '../../shared/color_conversion.dart';
@@ -69,12 +67,11 @@ class FileView extends StatelessWidget {
                     PopupMenuButton(
                       onSelected: (value) {
                         if (value == 'download') {
-                          print("KI HOCCHE ESHOB");
+                          // print("KI HOCCHE ESHOB");
                         }
                         if (value == 'delete') {
                           // fileList.removeAt(index);
                         }
-
                       },
                       itemBuilder: (context) {
                         return [

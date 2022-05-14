@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:bracuspace_flutter/models/models.dart';
-import 'package:bracuspace_flutter/views/screens/side_menu_screen.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
+import 'package:bracuspace_flutter/views/screens/side_menu_screen.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import '../widgets/folder_car.dart';
+
+import '../widgets/file_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -136,14 +136,13 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
-  late Future<int> lengthOfFile;
-
-  static Future<int> _getFileLength() async {
-    return await fileList.then((value) {
-      return value.length;
-    });
-  }
+// late Future<int> lengthOfFile;
+//
+// static Future<int> _getFileLength() async {
+//   return await fileList.then((value) {
+//     return value.length;
+//   });
+// }
 // Future<File> saveFilePermanently(PlatformFile file) async {
 //   final appStorage = await precacheImage(provider, context);
 //   final newFile = File(appStorage.path + '/' + file.name, name: 'newFile');

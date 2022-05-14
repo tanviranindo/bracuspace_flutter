@@ -1,14 +1,14 @@
+import 'package:bracuspace_flutter/components/constants.dart';
 import 'package:bracuspace_flutter/views/screens/home_screen.dart';
 import 'package:bracuspace_flutter/views/screens/landing_screen.dart';
 import 'package:bracuspace_flutter/views/screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bracuspace_flutter/utilities/constants.dart';
 
+import '../../components/showSnackBar.dart';
 import '../../shared/assets.dart';
 import '../../shared/constants.dart';
-import '../../utilities/showSnackBar.dart';
 import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -138,7 +138,7 @@ class LoginScreenState extends State<LoginScreen> {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () {
-          print('Forgot Password Button Pressed');
+          // print('Forgot Password Button Pressed');
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const ForgotPassword(),
           ));

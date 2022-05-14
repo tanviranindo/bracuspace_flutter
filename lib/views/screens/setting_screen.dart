@@ -1,12 +1,9 @@
 import 'package:bracuspace_flutter/views/screens/screens.dart';
-
-// import 'package:bracuspace/presentation/widgets/widgets.dart';
-// import 'package:bracuspace/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/constants.dart';
 import '../../shared/theme_data.dart';
-import '../widgets/custom_switch_tile.dart';
+import '../widgets/custom_switch.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -45,9 +42,11 @@ class SettingScreen extends StatelessWidget {
               children: List.generate(
                 settingItems.length,
                 (i) => ListTile(
-                  onTap: i == 0 ? () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChangePasswordScreen()))
+                  onTap: i == 0
+                      ? () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ChangePasswordScreen()))
                       // i == 1 ? () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UpgradeScreen()))
-                  : null,
+                      : null,
                   title: Text(settingItems[i]),
                 ),
               ),
@@ -62,8 +61,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               value: false,
-              onToggle: (bool value) {
-              },
+              onToggle: (bool value) {},
             ),
             CustomSwitchListTile(
               title: const Text(
@@ -74,8 +72,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               value: false,
-              onToggle: (bool value) {
-              },
+              onToggle: (bool value) {},
             ),
           ],
         ),

@@ -1,6 +1,5 @@
-import 'package:bracuspace_flutter/views/screens/screens.dart';
 import 'package:bracuspace_flutter/shared/shared.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:bracuspace_flutter/views/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
